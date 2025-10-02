@@ -10,7 +10,10 @@ enum StrikerType {
   NO_PACK = 0,
   AILE_STRIKER = 1,
   SWORD_STRIKER = 2,
-  LAUNCHER_STRIKER = 3
+  LAUNCHER_STRIKER = 3,
+  INTEGRATED_WEAPONS_STRIKER = 4,
+  OHTORI_STRIKER = 5,
+  PERFECT_STRIKE = 6
 };
 
 class ChagingStrikerPackSystem {

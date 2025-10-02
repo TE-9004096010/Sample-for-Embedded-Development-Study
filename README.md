@@ -27,6 +27,9 @@ STM32 based embedded system that simulates the Strike Gundam striker pack changi
 2. **Aile Striker** - High mobility with wing thrusters
 3. **Sword Striker** - Close combat with Schwert Gewehr
 4. **Launcher Striker** - Heavy artillery configuration
+5. **I.W.S.P** - Integrated Weapons Striker Pack
+6. **Ohtori Striker** - Enhanced mobility pack
+7. **Perfect Strike** - All weapons simultaneously equipped
 
 ## Getting Started
 

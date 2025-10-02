@@ -14,6 +14,9 @@ void setup() {
   pinMode(BUTTON_SWORD, INPUT_PULLUP);
   pinMode(BUTTON_LAUNCHER, INPUT_PULLUP);
   pinMode(BUTTON_BASE, INPUT_PULLUP);
+  pinMode(BUTTON_IWSP, INPUT_PULLUP);
+  pinMode(BUTTON_OHTORI, INPUT_PULLUP);
+  pinMode(BUTTON_PERFECT, INPUT_PULLUP);
   
   strikeSystem.initialize();
   
@@ -39,6 +42,22 @@ void loop() {
   
   if (digitalRead(BUTTON_BASE) == LOW) {
     strikeSystem.changeStriker(NO_PACK);
+    delay(300);
+  }
+  
+  // 新しいストライカーパック
+  if (digitalRead(BUTTON_IWSP) == LOW) {
+    strikeSystem.changeStriker(INTEGRATED_WEAPONS_STRIKER);
+    delay(300);
+  }
+  
+  if (digitalRead(BUTTON_OHTORI) == LOW) {
+    strikeSystem.changeStriker(OHTORI_STRIKER);
+    delay(300);
+  }
+  
+  if (digitalRead(BUTTON_PERFECT) == LOW) {
+    strikeSystem.changeStriker(PERFECT_STRIKE);
     delay(300);
   }
 }

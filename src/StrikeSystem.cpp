@@ -116,6 +116,29 @@ void ChagingStrikerPackSystem::detachCurrentStriker(StrikerType striker) {
       wingServo[1].write(0);
       delay(500);
       break;
+
+    case INTEGRATED_WEAPONS_STRIKER:
+      // I.W.S.P格納モーション
+      wingServo[0].write(0);
+      wingServo[1].write(0);
+      delay(500);
+      break;
+
+    case OHTORI_STRIKER:
+      // オオトリ格納モーション
+      wingServo[0].write(0);
+      wingServo[1].write(0);
+      delay(500);
+      break;
+
+    case PERFECT_STRIKE:
+      // パーフェクトストライク格納（複雑な動作）
+      for(int pos = 180; pos >= 0; pos -= 3) {
+        wingServo[0].write(pos);
+        wingServo[1].write(pos);
+        delay(15);
+      }
+      break;
       
     case NO_PACK:
       // 既に素体状態
@@ -162,6 +185,39 @@ void ChagingStrikerPackSystem::attachNewStriker(StrikerType striker) {
       wingServo[1].write(45);
       delay(1000);
       break;
+
+    case INTEGRATED_WEAPONS_STRIKER:
+      // I.W.S.P装着
+      backpackServo.write(45);
+      delay(500);
+      // ウイング展開
+      wingServo[0].write(90);
+      wingServo[1].write(90);
+      delay(1000);
+      break;
+
+    case OHTORI_STRIKER:
+      // オオトリ装着
+      backpackServo.write(45);
+      delay(500);
+      // ウイング展開
+      wingServo[0].write(90);
+      wingServo[1].write(90);
+      delay(1000);
+      break;
+
+    case PERFECT_STRIKE:
+      // パーフェクトストライク装着（全武装展開）
+      backpackServo.write(0);  // 特殊ポジション
+      delay(300);
+      // 段階的な全武装展開
+      for(int pos = 0; pos <= 180; pos += 3) {
+        wingServo[0].write(pos);
+        wingServo[1].write(180 - pos);  // 非対称展開
+        delay(15);
+      }
+      delay(1000);
+      break;
       
     case NO_PACK:
       // 素体状態
@@ -203,6 +259,15 @@ void ChagingStrikerPackSystem::displayStatus() {
       break;
     case LAUNCHER_STRIKER:
       lcd.print("Launcher Striker");
+      break;
+    case INTEGRATED_WEAPONS_STRIKER:
+      lcd.print("I.W.S.P");
+      break;
+    case OHTORI_STRIKER:
+      lcd.print("Ohtori Striker");
+      break;
+    case PERFECT_STRIKE:
+      lcd.print("Perfect Strike");
       break;
   }
 }

@@ -33,6 +33,9 @@
 - **Sword Button**: PC14 (with internal pull-up)
 - **Launcher Button**: PC15 (with internal pull-up)
 - **Base Button**: PA0 (with internal pull-up)
+- **I.W.S.P Button**: PA1 (with internal pull-up)
+- **Ohtori Button**: PA2 (with internal pull-up)
+- **Perfect Button**: PA3 (with internal pull-up)
 
 ## Power Supply
 - **STM32**: 3.3V via USB or external 3.3V regulator

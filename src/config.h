@@ -30,6 +30,9 @@
 #define BUTTON_SWORD    PC14  // ソードストライカー
 #define BUTTON_LAUNCHER PC15  // ランチャーストライカー
 #define BUTTON_BASE     PA0   // 素体モード
+#define BUTTON_IWSP     PA1   // I.W.S.P
+#define BUTTON_OHTORI   PA2   // オオトリストライカー
+#define BUTTON_PERFECT  PA3   // パーフェクトストライク
 
 // タイミング定数
 #define DEBOUNCE_DELAY 300    // チャタリング防止遅延(ms)
