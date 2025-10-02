@@ -1,15 +1,15 @@
 # Technical Specifications
 
 ## System Overview
-Strike Gundam Striker Pack Change System - Embedded C++ project for Arduino/ESP32
+Strike Gundam Striker Pack Change System - Embedded C++ project for STM32
 
 ## Hardware Requirements
 
 ### Microcontroller
-- **Primary**: Arduino Uno R3
-- **Alternative**: ESP32 DevKit V1
-- **Memory**: 32KB Flash, 2KB RAM (Arduino Uno)
-- **Clock**: 16MHz (Arduino Uno)
+- **Primary**: STM32F103C8T6 (Blue Pill)
+- **Alternative**: STM32F401CCU6 (Black Pill)
+- **Memory**: 64KB Flash, 20KB RAM (STM32F103)
+- **Clock**: 72MHz (STM32F103)
 
 ### Actuators
 - **3x Servo Motors**: SG90 or similar (180° rotation)
@@ -28,29 +28,31 @@ Strike Gundam Striker Pack Change System - Embedded C++ project for Arduino/ESP3
 - **1x Buzzer**: Passive piezo buzzer
 
 ### Power Supply
-- **Arduino**: 5V via USB or 7-12V DC adapter
-- **Servo Power**: External 5V/2A power supply recommended
+- **STM32**: 3.3V via USB or external regulator
+- **Servo Power**: External 5V/2A power supply
 - **Current Draw**: ~1.5A peak (with all servos active)
 
 ## Software Specifications
 
 ### Programming Language
-- **Language**: C++ (Arduino framework)
-- **Compiler**: AVR-GCC
+- **Language**: C++ (STM32 HAL/Arduino framework)
+- **Compiler**: ARM-GCC
+- **IDE**: STM32CubeIDE, PlatformIO, or Arduino IDE with STM32 core
 - **Libraries**: 
-  - Servo.h (servo control)
-  - LiquidCrystal.h (LCD display)
+  - STM32 HAL drivers
+  - Servo library (STM32 compatible)
+  - LiquidCrystal library (STM32 compatible)
 
 ### Memory Usage
-- **Program Storage**: ~8KB (estimated)
-- **Dynamic Memory**: ~512 bytes (estimated)
-- **Stack Usage**: ~256 bytes (estimated)
+- **Program Storage**: ~16KB (estimated)
+- **Dynamic Memory**: ~2KB (estimated)
+- **Stack Usage**: ~512 bytes (estimated)
 
 ### Timing Specifications
-- **Main Loop**: ~100Hz execution rate
+- **Main Loop**: ~1kHz execution rate
 - **Button Debounce**: 300ms
 - **Servo Movement**: 500ms transition time
-- **LED Fade**: 20ms per step
+- **LED Fade**: 10ms per step
 - **PWM Frequency**: 50Hz (servo control)
 
 ## Performance Characteristics
@@ -62,9 +64,10 @@ Strike Gundam Striker Pack Change System - Embedded C++ project for Arduino/ESP3
 - **Servo Positioning**: ±2° accuracy
 
 ### Operating Conditions
-- **Temperature**: 0°C to 50°C
+- **Temperature**: -40°C to 85°C
 - **Humidity**: 20% to 80% RH (non-condensing)
-- **Power Consumption**: 500mA typical, 1.5A peak
+- **Power Consumption**: 300mA typical, 1.5A peak
+- **Supply Voltage**: 3.3V ±5%
 
 ## Striker Pack Configurations
 

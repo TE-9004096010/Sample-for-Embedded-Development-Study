@@ -18,7 +18,6 @@ private:
   StrikerType currentStriker;
   Servo backpackServo;
   Servo wingServo[2];  // ウイング用サーボ
-  int psArmorLED[4];   // PS装甲LED
   int buzzerPin;
   LiquidCrystal lcd;
   

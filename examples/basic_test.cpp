@@ -1,13 +1,13 @@
 #include <Arduino.h>
 
-// 基本テスト用のシンプルなプログラム
+// STM32用基本テストプログラム
 // このプログラムは各コンポーネントの動作を個別にテストします
 
-// ピン定義
-#define SERVO_PIN 9
-#define LED_PIN 8
-#define BUTTON_PIN A0
-#define BUZZER_PIN 13
+// ピン定義 (STM32F103C8T6)
+#define SERVO_PIN PA6
+#define LED_PIN PB12
+#define BUTTON_PIN PC13
+#define BUZZER_PIN PB1
 
 void setup() {
   Serial.begin(9600);
@@ -15,9 +15,9 @@ void setup() {
   // ピン初期化
   pinMode(LED_PIN, OUTPUT);
   pinMode(BUZZER_PIN, OUTPUT);
-  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  pinMode(BUTTON_PIN, INPUT_PULLUP);  // 内部プルアップ使用
   
-  Serial.println("Strike Gundam Basic Test");
+  Serial.println("Strike Gundam Basic Test (STM32)");
   Serial.println("Press button to test components");
 }
 

@@ -12,11 +12,14 @@ void ChagingStrikerPackSystem::initialize() {
   wingServo[1].attach(SERVO_WING_RIGHT);
   
   // PS装甲LED初期化
-  for(int i = 0; i < 4; i++) {
-    psArmorLED[i] = PS_ARMOR_LED_START + i;
-    pinMode(psArmorLED[i], OUTPUT);
-    digitalWrite(psArmorLED[i], LOW);
-  }
+  pinMode(PS_ARMOR_LED_1, OUTPUT);
+  pinMode(PS_ARMOR_LED_2, OUTPUT);
+  pinMode(PS_ARMOR_LED_3, OUTPUT);
+  pinMode(PS_ARMOR_LED_4, OUTPUT);
+  digitalWrite(PS_ARMOR_LED_1, LOW);
+  digitalWrite(PS_ARMOR_LED_2, LOW);
+  digitalWrite(PS_ARMOR_LED_3, LOW);
+  digitalWrite(PS_ARMOR_LED_4, LOW);
   
   // ブザー初期化
   buzzerPin = BUZZER_PIN;
@@ -62,29 +65,32 @@ void ChagingStrikerPackSystem::executeChangeSequence(StrikerType from, StrikerTy
 
 void ChagingStrikerPackSystem::activatePSArmor() {
   // PS装甲展開エフェクト
-  for(int brightness = 0; brightness <= 255; brightness += 5) {
-    for(int i = 0; i < 4; i++) {
-      analogWrite(psArmorLED[i], brightness);
-    }
+  for(int brightness = 0; brightness <= 255; brightness += LED_FADE_STEP) {
+    analogWrite(PS_ARMOR_LED_1, brightness);
+    analogWrite(PS_ARMOR_LED_2, brightness);
+    analogWrite(PS_ARMOR_LED_3, brightness);
+    analogWrite(PS_ARMOR_LED_4, brightness);
     playPSArmorSound();
-    delay(20);
+    delay(LED_FADE_DELAY);
   }
   delay(500);
 }
 
 void ChagingStrikerPackSystem::deactivatePSArmor() {
   // PS装甲収納エフェクト
-  for(int brightness = 255; brightness >= 0; brightness -= 5) {
-    for(int i = 0; i < 4; i++) {
-      analogWrite(psArmorLED[i], brightness);
-    }
-    delay(20);
+  for(int brightness = 255; brightness >= 0; brightness -= LED_FADE_STEP) {
+    analogWrite(PS_ARMOR_LED_1, brightness);
+    analogWrite(PS_ARMOR_LED_2, brightness);
+    analogWrite(PS_ARMOR_LED_3, brightness);
+    analogWrite(PS_ARMOR_LED_4, brightness);
+    delay(LED_FADE_DELAY);
   }
   
   // 完全消灯
-  for(int i = 0; i < 4; i++) {
-    digitalWrite(psArmorLED[i], LOW);
-  }
+  digitalWrite(PS_ARMOR_LED_1, LOW);
+  digitalWrite(PS_ARMOR_LED_2, LOW);
+  digitalWrite(PS_ARMOR_LED_3, LOW);
+  digitalWrite(PS_ARMOR_LED_4, LOW);
 }
 
 void ChagingStrikerPackSystem::detachCurrentStriker(StrikerType striker) {

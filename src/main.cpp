@@ -9,7 +9,7 @@ ChagingStrikerPackSystem strikeSystem;
 void setup() {
   Serial.begin(9600);
   
-  // ボタン初期化
+  // ボタン初期化（内部プルアップ使用）
   pinMode(BUTTON_AILE, INPUT_PULLUP);
   pinMode(BUTTON_SWORD, INPUT_PULLUP);
   pinMode(BUTTON_LAUNCHER, INPUT_PULLUP);
@@ -17,7 +17,7 @@ void setup() {
   
   strikeSystem.initialize();
   
-  Serial.println("Strike Gundam System Ready!");
+  Serial.println("Strike Gundam System Ready! (STM32)");
 }
 
 void loop() {

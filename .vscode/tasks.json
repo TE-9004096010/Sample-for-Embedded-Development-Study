@@ -2,17 +2,42 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "Arduino Compile",
+			"label": "STM32 PlatformIO Build",
 			"type": "shell",
-			"command": "arduino-cli",
+			"command": "pio",
 			"args": [
-				"compile",
-				"--fqbn",
-				"arduino:avr:uno",
-				"."
+				"run",
+				"-e",
+				"bluepill_f103c8"
 			],
-			"problemMatcher": [],
-			"group": "build"
+			"group": "build",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared"
+			},
+			"problemMatcher": "$gcc"
+		},
+		{
+			"label": "STM32 PlatformIO Upload",
+			"type": "shell",
+			"command": "pio",
+			"args": [
+				"run",
+				"-e",
+				"bluepill_f103c8",
+				"-t",
+				"upload"
+			],
+			"group": "build",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared"
+			},
+			"problemMatcher": "$gcc"
 		}
 	]
 }
