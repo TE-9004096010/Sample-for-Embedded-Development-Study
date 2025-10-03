@@ -45,7 +45,6 @@ void loop() {
     delay(300);
   }
   
-  // 新しいストライカーパック
   if (digitalRead(BUTTON_IWSP) == LOW) {
     strikeSystem.changeStriker(INTEGRATED_WEAPONS_STRIKER);
     delay(300);
